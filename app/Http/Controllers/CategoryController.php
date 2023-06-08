@@ -37,7 +37,8 @@ class CategoryController extends Controller
     {
         Category::create([
             'name' => $request->name,
-            'logo' => $request->file('logo')->store('categorylogo')
+            'logo' => $request->file('logo')->store('categorylogo'),
+            'bg' => $request->file('bg')->store('categorybg')
         ]);
     }
 
@@ -78,6 +79,12 @@ class CategoryController extends Controller
                 'logo' => $request->file('logo')->store('categorylogo')
             ]);
         }
+        if($request->file('bg')) {
+            unlink('storage/'.$category->bg);
+            $category->update([
+                'bg' => $request->file('bg')->store('categorybg')
+            ]);
+        }
         $category->update([
             'name' => $request->name
         ]);
@@ -92,6 +99,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         unlink('storage/'.$category->logo);
+        unlink('storage/'.$category->bg);
         $category->delete();
     }
 }

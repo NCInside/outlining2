@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Outlining</title>
-</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
+        <title>Outlining</title>
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.bunny.net">
+        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+        <!-- Scripts -->
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    </head>
 <body>
-    <div class="min-h-screen bg-cover bg-no-repeat overflow-x-hidden" style="background-image: url(".@@yield('bg').")">
+    <div class="min-h-screen bg-cover bg-no-repeat overflow-x-hidden" style="background-image: url(@yield('bg'))">
         <nav x-data="{ open: false }" class="bg-gradient-to-b from-[#000000] text-center">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between h-20">
@@ -15,7 +23,6 @@
                         <div class="shrink-0 flex items-center">
                             <a href="/" class='text-white font-bold text-4xl'>Outlining<br/>Design</a>
                         </div>
-
                         <div class="hidden space-x-8 md:-my-px md:ml-10 md:flex">
                             <x-navlink :href="route('home')" :active="request()->routeIs('home')">
                                 {{ __('Home') }}
@@ -42,9 +49,15 @@
 
             <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
                 <div class="pt-2 pb-3 space-y-1">
-                    <x-responsivenavlink :href="route('home')" :active="request()->routeIs('home')">
+                    <x-dropdown-link :href="route('home')">
                         {{ __('Home') }}
-                    </x-responsivenavlink>
+                    </x-dropdown-link>
+                    <x-dropdown-link :href="route('project.index')">
+                        {{ __("Student's\nFinal Project") }}
+                    </x-dropdown-link>
+                    <x-dropdown-link :href="route('about')">
+                        {{ __("About\nOutlining") }}
+                    </x-dropdown-link>
                 </div>
             </div>
         </nav>
@@ -52,8 +65,11 @@
             @yield('content')
         </main>
         <footer>
-            <div>
-
+            <div class="flex justify-center bg-gradient-to-t py-6 from-[#000000] gap-x-8">
+                <a href=""><img src="iglogo.svg" alt="IG"></a>
+                <a href=""><img src="utublogo.svg" alt="YT"></a>
+                <a href=""><img src="fblogo.svg" alt="FB"></a>
+                <a href=""><img src="walogo.svg" alt="WA"></a>
             </div>
         </footer>
     </div>
