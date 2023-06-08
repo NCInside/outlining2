@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\GaleryController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::resource('category', CategoryController::class);
+Route::resource('galery', GaleryController::class);
+Route::resource('project', ProjectController::class);
 
 Route::get('/', function () {
     return view('welcome');
