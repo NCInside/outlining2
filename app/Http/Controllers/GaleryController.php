@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Galery;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class GaleryController extends Controller
@@ -24,7 +25,9 @@ class GaleryController extends Controller
      */
     public function create()
     {
-        //
+        return view('create.galery', [
+            'projects' => Project::all()
+        ]);
     }
 
     /**
@@ -36,8 +39,8 @@ class GaleryController extends Controller
     public function store(Request $request)
     {
         Galery::create([
-            'image' => $request->file('image')->store('galeryimage'),
-            'project_id' => $request->project_id
+            'image' => $request->file('image')->store('galeryimage', 'public'),
+            'project_id' => $request->project
         ]);
     }
 
@@ -75,7 +78,7 @@ class GaleryController extends Controller
         if($request->file('image')) {
             unlink('storage/'.$galery->image);
             $galery->update([
-                'image' => $request->file('image')->store('galeryimage'),
+                'image' => $request->file('image')->store('galeryimage', 'public'),
                 'project_id' => $request->project_id
             ]);
         }

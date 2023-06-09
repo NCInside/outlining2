@@ -17,7 +17,10 @@
     <div class='text-center pt-16'>
         <p class='text-white font-semibold text-2xl'>Explore Outlining Design</p>
         <div class='flex'>
-            
+            @foreach($categories as $category)
+                <img src="/storage/{{ $category->logo }}" alt={{ $category->name }}>
+                <p>{{ $category->name }}</p>
+            @endforeach 
         </div>
     </div>
 </div>

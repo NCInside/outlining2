@@ -15,6 +15,29 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
 <body>
+    <div class="p-10">
+        <form action="{{ route('galery.store') }}" method="POST" enctype="multipart/form-data">
     
+            @csrf
+            <div class="mb-3">
+                <label for="">Image</label>
+                <input type="file" name="image" class="form-control">
+                @if ($errors->has('image'))
+                    <p class="text-danger">{{ $errors->first('image') }}</p>
+                @endif
+            </div>
+            <div class="mb-3">
+                <label for="project">Project:</label>
+                <select name="project" id="project" required>
+                    @foreach($projects as $project)
+                        <option value="{{ $project->id }}">{{ $project->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+        
+            <button type="submit" class="bg-green-300 rounded p-3 mt-5 hover:bg-green-500 hover:ring-2 hover:ring-green-500">Submit</button>
+        
+        </form>
+    </div>
 </body>
 </html>

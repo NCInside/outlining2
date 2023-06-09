@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -14,7 +15,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('home', [
+            'highlights' => Project::whereHighlight(true)->get(),
+            'categories' => Category::all()
+        ]);
     }
 
     /**
@@ -24,7 +28,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        
+        return view('create.category');
     }
 
     /**
@@ -37,8 +41,8 @@ class CategoryController extends Controller
     {
         Category::create([
             'name' => $request->name,
-            'logo' => $request->file('logo')->store('categorylogo'),
-            'bg' => $request->file('bg')->store('categorybg')
+            'logo' => $request->file('logo')->store('categorylogo', 'public'),
+            'bg' => $request->file('bg')->store('categorybg', 'public')
         ]);
     }
 
@@ -76,13 +80,13 @@ class CategoryController extends Controller
         if($request->file('logo')) {
             unlink('storage/'.$category->logo);
             $category->update([
-                'logo' => $request->file('logo')->store('categorylogo')
+                'logo' => $request->file('logo')->store('categorylogo', 'public')
             ]);
         }
         if($request->file('bg')) {
             unlink('storage/'.$category->bg);
             $category->update([
-                'bg' => $request->file('bg')->store('categorybg')
+                'bg' => $request->file('bg')->store('categorybg', 'public')
             ]);
         }
         $category->update([

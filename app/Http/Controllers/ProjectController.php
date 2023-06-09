@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('create.project', [
+            'categories' => Category::all()
+        ]);
     }
 
     /**
@@ -36,19 +39,19 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         Project::create([
-            'bg' => $request->file('bg')->store('projectbg'),
+            'bg' => $request->file('bg')->store('projectbg', 'public'),
             'title' => $request->title,
             'description' => $request->description,
-            'photo' => $request->file('photo')->store('projectphoto'),
+            'photo' => $request->file('photo')->store('projectphoto', 'public'),
             'video' => $request->video,
             'name' => $request->name,
             'nim' => $request->nim,
-            'profile' => $request->file('profile')->store('projectprofile'),
+            'profile' => $request->file('profile')->store('projectprofile', 'public'),
             'ig' => $request->ig,
             'wa' => $request->wa,
-            'qr' => $request->file('qr')->store('projectqr'),
+            'qr' => $request->file('qr')->store('projectqr', 'public'),
             'highlight' => $request->highlight,
-            'category_id' => $request->category_id
+            'category_id' => $request->category
         ]);
     }
 
@@ -86,25 +89,25 @@ class ProjectController extends Controller
         if($request->file('bg')) {
             unlink('storage/',$project->bg);
             $project->update([
-                'bg' => $request->file('bg')->store('projectbg')
+                'bg' => $request->file('bg')->store('projectbg', 'public')
             ]);
         }
         if($request->file('photo')) {
             unlink('storage/',$project->photo);
             $project->update([
-                'photo' => $request->file('photo')->store('projectphoto')
+                'photo' => $request->file('photo')->store('projectphoto', 'public')
             ]);
         }
         if($request->file('profile')) {
             unlink('storage/',$project->profile);
             $project->update([
-                'profile' => $request->file('profile')->store('projectprofile')
+                'profile' => $request->file('profile')->store('projectprofile', 'public')
             ]);
         }
         if($request->file('qr')) {
             unlink('storage/',$project->qr);
             $project->update([
-                'qr' => $request->file('qr')->store('projectqr')
+                'qr' => $request->file('qr')->store('projectqr', 'public')
             ]);
         }
         $project->update([
