@@ -66,10 +66,10 @@
         </main>
         <footer>
             <div class="flex justify-center bg-gradient-to-t py-6 from-[#000000] gap-x-8">
-                <a href=""><img src="iglogo.svg" alt="IG"></a>
-                <a href=""><img src="utublogo.svg" alt="YT"></a>
-                <a href=""><img src="fblogo.svg" alt="FB"></a>
-                <a href=""><img src="walogo.svg" alt="WA"></a>
+                <a href=""><img src="{{ asset('iglogo.svg') }}" alt="IG"></a>
+                <a href=""><img src="{{ asset('utublogo.svg') }}" alt="YT"></a>
+                <a href=""><img src="{{ asset('fblogo.svg') }}" alt="FB"></a>
+                <a href=""><img src="{{ asset('walogo.svg') }}" alt="WA"></a>
             </div>
         </footer>
     </div>
