@@ -15,7 +15,10 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        return view('projects', [
+            'category' => null,
+            'projects' => Project::all()
+        ]);
     }
 
     /**
@@ -63,7 +66,9 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        return view('highlight', [
+            'project' => $project
+        ]);
     }
 
     /**

@@ -54,7 +54,10 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return view('projects', [
+            'category' => $category,
+            'projects' => Project::whereCategoryId($category->id)->get()
+        ]);
     }
 
     /**
