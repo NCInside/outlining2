@@ -18,20 +18,23 @@
             <img src="/storage/{{ $project->photo }}" alt="{{ $project->title }}" class="m-auto">
         </div>
     </div>
-    <div class='text-center pt-16 px-8'>
+    <div class='text-center pt-16 px-2'>
         <p class='font-semibold text-2xl'>Final Project Gallery</p>
         <div id="galeryContainer" class="py-8 gap-x-12 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 justify-center place-items-center">
-            <button id="prevButton" class="bg-gray-200 rounded-full p-0 w-16 h-16" disabled>
+            <button id="prevButton" class="bg-gray-200 rounded-full p-0 w-8 h-8 md:w-16 md:h-16" disabled>
                 <svg class="w-full h-full text-gray-600" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M12.293 15.707a1 1 0 0 1-1.414 0L5 10l5.293-5.293a1 1 0 0 1 1.414 1.414L7.414 10l5.293 5.293a1 1 0 0 1 0 1.414z" clip-rule="evenodd" />
                 </svg>
             </button>
             @foreach ($project->galeries as $key => $galery)
                 <div class="galery-card" style="{{ $key >= 3 ? 'display:none' : '' }}">
-                    <img src="/storage/{{ $galery->image }}" alt="{{ $galery->project_id }}">
+                    {{-- <img src="/storage/{{ $galery->image }}" alt="{{ $galery->project_id }}"> --}}
+                    <a href="">
+                        <div class="h-64 w-32 md:w-44 bg-cover bg-no-repeat relative hover:transform hover:scale-110 transition duration-500" style="background-image: url(/storage/{{ $galery->image }})"></div>
+                    </a>
                 </div>
             @endforeach
-            <button id="nextButton" class="bg-gray-200 rounded-full p-0 w-16 h-16">
+            <button id="nextButton" class="bg-gray-200 rounded-full p-0 w-8 h-8 md:w-16 md:h-16">
                 <svg class="w-full h-full text-gray-600" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M7.707 4.293a1 1 0 0 1 1.414 0L15 10l-5.293 5.293a1 1 0 0 1-1.414-1.414L12.586 10 7.293 4.707a1 1 0 0 1 0-1.414z" clip-rule="evenodd" />
                 </svg>
@@ -48,11 +51,11 @@
             <div class="grid grid-cols-2 rounded-lg bg-gradient-to-b from-[#865E9F] p-5 w-full gap-x-6">
                 <div>
                     <p class="md:text-4xl sm:text-3xl text-lg font-bold pb-1 md:pb-3">Contact: </p>
-                    <p class="md:text-2xl sm:text-xl text-sm whitespace-pre-wrap">{{ $project->ig }}</p>
-                    <p class="md:text-2xl sm:text-xl text-sm">{{ $project->wa }}</p>
+                    <p class="md:text-2xl sm:text-xl text-sm overflow-wrap break-words">{{ $project->ig }}</p>
+                    <p class="md:text-2xl sm:text-xl text-sm overflow-wrap break-words">{{ $project->wa }}</p>
                 </div>
                 <div>
-                    <p class="md:text-4xl sm:text-3xl text-lg font-bold pb-3">Scan/click here!</p>
+                    <p class="md:text-4xl sm:text-3xl text-lg font-bold pb-3">Scan / click here!</p>
                     <img src="/storage/{{ $project->qr }}" alt="{{ $project->title }}">
                 </div>
             </div>

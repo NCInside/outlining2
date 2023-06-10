@@ -13,14 +13,14 @@
     <div class='text-center pt-16 px-8'>
         <p class='text-white font-semibold text-2xl'>Highlights</p>
         <div id="highlightContainer" class="py-8 gap-x-12 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 justify-center place-items-center">
-            <button id="prevButton" class="bg-gray-200 rounded-full p-0 w-16 h-16" disabled>
+            <button id="prevButton" class="bg-gray-200 rounded-full p-0 w-8 h-8 md:w-16 md:h-16" disabled>
                 <svg class="w-full h-full text-gray-600" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M12.293 15.707a1 1 0 0 1-1.414 0L5 10l5.293-5.293a1 1 0 0 1 1.414 1.414L7.414 10l5.293 5.293a1 1 0 0 1 0 1.414z" clip-rule="evenodd" />
                 </svg>
             </button>
             @foreach ($highlights as $key => $highlight)
                 <div class="highlight-card" style="{{ $key >= 3 ? 'display:none' : '' }}">
-                    <x-projectcard :project="$highlight" />
+                    <x-projectcard :project="$highlight" style="h-64 w-32 md:w-44" />
                 </div>
                 {{-- @php
                     $showHighlight = '';
@@ -29,7 +29,7 @@
                     <x-projectcard :project="$highlight" />
                 </div> --}}
             @endforeach
-            <button id="nextButton" class="bg-gray-200 rounded-full p-0 w-16 h-16">
+            <button id="nextButton" class="bg-gray-200 rounded-full p-0 w-8 h-8 md:w-16 md:h-16">
                 <svg class="w-full h-full text-gray-600" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M7.707 4.293a1 1 0 0 1 1.414 0L15 10l-5.293 5.293a1 1 0 0 1-1.414-1.414L12.586 10 7.293 4.707a1 1 0 0 1 0-1.414z" clip-rule="evenodd" />
                 </svg>
