@@ -5,5 +5,8 @@
 @section('content')
 
 <h1>{{ $category ? $category->name : 'All' }}</h1>
+@foreach ($projects as $project)
+<x-projectcard :project="$project" />
+@endforeach
 
 @endsection
