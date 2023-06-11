@@ -6,12 +6,12 @@
 
 <div class='grid place-items-center w-full'>
     <div class='text-center pt-16'>
-        <p class='text-white text-xl font-semibold'>Welcome to<br/>Visual Communication Design's</p>
-        <p class='text-white text-6xl py-8 font-bold'>Outlining Design 2023</p>
-        <p class='text-white text-md px-12'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <p class='text-white text-xl font-bold hebrew'>Welcome to<br/>Visual Communication Design’s</p>
+        <p class='text-white text-6xl py-8 erica'>Outlining Design 2023</p>
+        <p class='text-white text-md px-12 hebrew font-medium'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
     </div>
     <div class='text-center pt-16 px-8'>
-        <p class='text-white font-semibold text-2xl'>Highlights</p>
+        <p class='text-white erica text-2xl'>Highlights</p>
         <div id="highlightContainer" class="py-8 gap-x-12 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 justify-center place-items-center">
             <button id="prevButton" class="bg-gray-200 rounded-full p-0 w-8 h-8 md:w-16 md:h-16" disabled>
                 <svg class="w-full h-full text-gray-600" viewBox="0 0 20 20" fill="currentColor">
@@ -37,7 +37,7 @@
         </div>        
     </div>
     <div class='text-center pt-16'>
-        <p class='text-white font-semibold text-2xl'>Explore Outlining Design</p>
+        <p class='text-white erica text-2xl'>Explore Outlining Design</p>
         <div class='grid gap-y-16 gap-x-8 min-[500px]:grid-cols-2 min-[930px]:grid-cols-3 grid-cols-1'>
             @foreach($categories as $category)
                 <div class="flex flex-col relative mr-3">
@@ -46,7 +46,7 @@
                             <img src="/storage/{{ $category->logo}}" class="h-48 w-full hover:transform hover:scale-110 transition duration-500">
                         </a>
                         <div class="pt-6">
-                            <div class="whitespace-pre-wrap font-semibold text-white text-lg">{{ $category->name }}</div>
+                            <div class="whitespace-pre-wrap hebrew font-bold text-white text-lg">{{ $category->name }}</div>
                         </div>
                     </div>
                 </div>

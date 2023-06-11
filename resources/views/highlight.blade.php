@@ -6,20 +6,20 @@
 
 <div class="text-white">
     <div class="py-4">
-        <button id="backButton" class="text-lg font-bold py-2 px-6 bg-gradient-to-r from-[#000000]">< Back</button>
+        <button id="backButton" class="text-lg hebrew font-bold py-2 px-6 bg-gradient-to-r from-[#000000]">< Back</button>
     </div>
     <div class="flex flex-wrap-reverse w-full justify-around justify-items-center pt-8 px-6">
         <div class="text-center md:text-left w-96 md:w-2/5 pt-12 md:pt-0">
-            <p class="text-6xl font-bold">{{ $project->title }}</p>
+            <p class="text-6xl erica">{{ $project->title }}</p>
             <br>
-            <p class="text-lg font-semibold">{{ $project->description }}</p>
+            <p class="text-lg hebrew font-bold">{{ $project->description }}</p>
         </div>
         <div class="w-96 md:w-2/5">
             <img src="/storage/{{ $project->photo }}" alt="{{ $project->title }}" class="m-auto">
         </div>
     </div>
     <div class='text-center pt-16 px-2'>
-        <p class='font-semibold text-2xl'>Final Project Gallery</p>
+        <p class='erica text-2xl'>Final Project Gallery</p>
         <div id="galeryContainer" class="py-8 gap-x-12 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 justify-center place-items-center">
             <button id="prevButton" class="bg-gray-200 rounded-full p-0 w-8 h-8 md:w-16 md:h-16" disabled>
                 <svg class="w-full h-full text-gray-600" viewBox="0 0 20 20" fill="currentColor">
@@ -44,18 +44,18 @@
     <div class="flex flex-wrap-reverse w-full justify-around justify-items-center items-end px-6 py-16">
         <div class="w-full md:w-2/5 pt-12 md:pt-0 flex flex-col gap-x-6 items-end">
             <div class="w-full pb-6 md:pb-12 md:pt-12 text-center md:text-left">
-                <p class="md:text-6xl sm:text-5xl text-4xl font-bold pb-2 md:pb-6">{{ $project->name }}</p>
-                <p class="md:text-2xl sm:text-xl text-lg font-semibold">{{ $project->nim }}</p>
+                <p class="md:text-6xl sm:text-5xl text-4xl erica pb-2 md:pb-6">{{ $project->name }}</p>
+                <p class="md:text-2xl sm:text-xl text-lg erica">{{ $project->nim }}</p>
             </div>
             {{-- Contact Card --}}
             <div class="grid grid-cols-2 rounded-lg bg-gradient-to-b from-[#865E9F] p-5 w-full gap-x-6">
                 <div>
-                    <p class="md:text-4xl sm:text-3xl text-lg font-bold pb-1 md:pb-3">Contact: </p>
-                    <p class="md:text-2xl sm:text-xl text-sm overflow-wrap break-words">{{ $project->ig }}</p>
-                    <p class="md:text-2xl sm:text-xl text-sm overflow-wrap break-words">{{ $project->wa }}</p>
+                    <p class="md:text-4xl sm:text-3xl text-lg hebrew font-bold pb-1 md:pb-3">Contact: </p>
+                    <p class="md:text-2xl sm:text-xl text-sm overflow-wrap break-words hebrew font-bold">{{ $project->ig }}</p>
+                    <p class="md:text-2xl sm:text-xl text-sm overflow-wrap break-words hebrew font-bold">{{ $project->wa }}</p>
                 </div>
                 <div>
-                    <p class="md:text-4xl sm:text-3xl text-lg font-bold pb-3">Scan / click here!</p>
+                    <p class="md:text-4xl sm:text-3xl text-lg hebrew font-bold pb-3">Scan / click here!</p>
                     <img src="/storage/{{ $project->qr }}" alt="{{ $project->title }}">
                 </div>
             </div>
@@ -68,6 +68,10 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById('backButton').addEventListener('click', function() {
+            history.back();
+        });
+
         const prevButton = document.getElementById("prevButton");
         const nextButton = document.getElementById("nextButton");
         const galeryContainer = document.getElementById("galeryContainer");
@@ -109,10 +113,6 @@
         }
         
         updateShowHighlight();
-
-        document.getElementById('backButton').addEventListener('click', function() {
-            history.back();
-        });
         
         prevButton.addEventListener("click", function() {
             if (startIndex > 0) {

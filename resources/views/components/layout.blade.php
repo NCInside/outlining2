@@ -21,17 +21,17 @@
                 <div class="flex justify-between h-20">
                     <div class="flex justify-between">
                         <div class="shrink-0 flex items-center">
-                            <a href="/" class='text-white font-bold text-4xl'>Outlining<br/>Design</a>
+                            <a href="/" class='text-white text-4xl erica'>Outlining<br/>Design</a>
                         </div>
                         <div class="hidden space-x-8 md:-my-px md:ml-10 md:flex">
                             <x-navlink :href="route('home')" :active="request()->routeIs('home')">
                                 {{ __('Home') }}
                             </x-navlink>
                             <x-navlink :href="route('project.index')" :active="request()->routeIs('project.index')">
-                                {{ __("Student's\nFinal Project") }}
+                                Student’s<br>Final Project
                             </x-navlink>
                             <x-navlink :href="route('about')" :active="request()->routeIs('about')">
-                                {{ __("About\nOutlining") }}
+                                About<br>Outlining
                             </x-navlink>
                         </div>
                     </div>
@@ -53,10 +53,10 @@
                         {{ __('Home') }}
                     </x-dropdown-link>
                     <x-dropdown-link :href="route('project.index')">
-                        {{ __("Student's\nFinal Project") }}
+                        {{ __("Student's Final Project") }}
                     </x-dropdown-link>
                     <x-dropdown-link :href="route('about')">
-                        {{ __("About\nOutlining") }}
+                        {{ __("About Outlining") }}
                     </x-dropdown-link>
                 </div>
             </div>
