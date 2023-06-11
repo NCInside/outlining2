@@ -28,7 +28,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('create.category');
+        //
     }
 
     /**
@@ -39,11 +39,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        Category::create([
-            'name' => $request->name,
-            'logo' => $request->file('logo')->store('categorylogo', 'public'),
-            'bg' => $request->file('bg')->store('categorybg', 'public')
-        ]);
+        //
     }
 
     /**
@@ -80,21 +76,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        if($request->file('logo')) {
-            unlink('storage/'.$category->logo);
-            $category->update([
-                'logo' => $request->file('logo')->store('categorylogo', 'public')
-            ]);
-        }
-        if($request->file('bg')) {
-            unlink('storage/'.$category->bg);
-            $category->update([
-                'bg' => $request->file('bg')->store('categorybg', 'public')
-            ]);
-        }
-        $category->update([
-            'name' => $request->name
-        ]);
+        //
     }
 
     /**
@@ -105,8 +87,6 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        unlink('storage/'.$category->logo);
-        unlink('storage/'.$category->bg);
-        $category->delete();
+        //
     }
 }

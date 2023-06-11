@@ -28,9 +28,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('create.project', [
-            'categories' => Category::all()
-        ]);
+        //
     }
 
     /**
@@ -41,21 +39,7 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        Project::create([
-            'bg' => $request->file('bg')->store('projectbg', 'public'),
-            'title' => $request->title,
-            'description' => $request->description,
-            'photo' => $request->file('photo')->store('projectphoto', 'public'),
-            'video' => $request->video,
-            'name' => $request->name,
-            'nim' => $request->nim,
-            'profile' => $request->file('profile')->store('projectprofile', 'public'),
-            'ig' => $request->ig,
-            'wa' => $request->wa,
-            'qr' => $request->file('qr')->store('projectqr', 'public'),
-            'highlight' => $request->highlight,
-            'category_id' => $request->category
-        ]);
+        //
     }
 
     /**
@@ -91,41 +75,7 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        if($request->file('bg')) {
-            unlink('storage/',$project->bg);
-            $project->update([
-                'bg' => $request->file('bg')->store('projectbg', 'public')
-            ]);
-        }
-        if($request->file('photo')) {
-            unlink('storage/',$project->photo);
-            $project->update([
-                'photo' => $request->file('photo')->store('projectphoto', 'public')
-            ]);
-        }
-        if($request->file('profile')) {
-            unlink('storage/',$project->profile);
-            $project->update([
-                'profile' => $request->file('profile')->store('projectprofile', 'public')
-            ]);
-        }
-        if($request->file('qr')) {
-            unlink('storage/',$project->qr);
-            $project->update([
-                'qr' => $request->file('qr')->store('projectqr', 'public')
-            ]);
-        }
-        $project->update([
-            'title' => $request->title,
-            'description' => $request->description,
-            'video' => $request->video,
-            'name' => $request->name,
-            'nim' => $request->nim,
-            'ig' => $request->ig,
-            'wa' => $request->wa,
-            'highlight' => $request->highlight,
-            'category_id' => $request->category_id
-        ]);
+        //
     }
 
     /**
@@ -136,10 +86,6 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        unlink('storage/',$project->bg);
-        unlink('storage/',$project->photo);
-        unlink('storage/',$project->profile);
-        unlink('storage/',$project->qr);
-        $project->delete();
+        //
     }
 }
