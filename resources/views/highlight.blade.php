@@ -56,7 +56,9 @@
                 </div>
                 <div>
                     <p class="md:text-4xl sm:text-3xl text-lg hebrew font-bold pb-3">Scan / click here!</p>
-                    <img src="/storage/{{ $project->qr }}" alt="{{ $project->title }}">
+                    <a href={{ $project->qrlink }} target="_blank">
+                        <img src="/storage/{{ $project->qr }}" alt="{{ $project->title }}">
+                    </a>
                 </div>
             </div>
         </div>
