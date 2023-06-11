@@ -23,6 +23,7 @@ class Project extends Model
         'ig',
         'wa',
         'qr',
+        'qrlink',
         'highlight',
         'category_id'
     ];

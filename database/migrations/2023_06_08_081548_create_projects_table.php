@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('ig');
             $table->string('wa');
             $table->string('qr');
+            $table->string('qrlink');
             $table->boolean('highlight');
             $table->foreignIdFor(Category::class);
         });
