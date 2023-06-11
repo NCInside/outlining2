@@ -2,6 +2,12 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
+use App\Models\Galery;
+use App\Models\Project;
+use App\Observers\CategoryObserver;
+use App\Observers\GaleryObserver;
+use App\Observers\ProjectObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +29,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Galery::observe(GaleryObserver::class);
+        Category::observe(CategoryObserver::class);
+        Project::observe(ProjectObserver::class);
     }
 }

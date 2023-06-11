@@ -5,11 +5,18 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\CategoryResource\Pages;
 use App\Filament\Resources\CategoryResource\RelationManagers;
 use App\Models\Category;
+use App\Tables\Columns\CustomImage;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -23,7 +30,17 @@ class CategoryResource extends Resource
     {
         return $form
             ->schema([
-                //
+                FileUpload::make('bg')
+                ->directory('categorybg')
+                ->image()
+                ->required(),
+                FileUpload::make('logo')
+                ->directory('categorylogo')
+                ->image()
+                ->required(),
+                TextInput::make('name')
+                ->maxLength(255)
+                ->required()
             ]);
     }
 
@@ -31,16 +48,19 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('name'),
+                CustomImage::make('logo'),
+                CustomImage::make('bg')
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                EditAction::make(),
+                DeleteAction::make()
             ])
             ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
+                DeleteBulkAction::make()
             ]);
     }
     
