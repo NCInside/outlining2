@@ -8,7 +8,7 @@
     <div class="py-4">
         <button id="backButton" class="text-lg hebrew font-bold py-2 px-6 bg-gradient-to-r from-[#000000]">< Back</button>
     </div>
-    <div class="flex flex-wrap-reverse w-full justify-around justify-items-center pt-8 px-6">
+    <div class="flex flex-wrap-reverse w-full justify-around justify-items-center place-items-center pt-8 px-6">
         <div class="text-center md:text-left w-96 md:w-2/5 pt-12 md:pt-0">
             <p class="text-6xl erica">{{ $project->title }}</p>
             <br>
@@ -29,9 +29,17 @@
             @foreach ($project->galeries as $key => $galery)
                 <div class="galery-card" style="{{ $key >= 3 ? 'display:none' : '' }}">
                     {{-- <img src="/storage/{{ $galery->image }}" alt="{{ $galery->project_id }}"> --}}
-                    <a href="">
+                    <button data-modal-target={{ $galery->image }} data-modal-toggle={{ $galery->image }}>
                         <div class="h-64 w-32 md:w-44 bg-cover bg-no-repeat relative hover:transform hover:scale-110 transition duration-500" style="background-image: url(/storage/{{ $galery->image }})"></div>
-                    </a>
+                    </button>
+                </div>
+                <div id={{ $galery->image }} tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                    <div class="relative w-full max-w-2xl max-h-full">
+                        <!-- Modal content -->
+                        <div class="relative bg-white rounded-lg shadow flex justify-center items-center p-10">
+                            <img src="/storage/{{ $galery->image }}" alt={{ $galery->image }}>
+                        </div>
+                    </div>
                 </div>
             @endforeach
             <button id="nextButton" class="bg-gray-200 rounded-full p-0 w-8 h-8 md:w-16 md:h-16">

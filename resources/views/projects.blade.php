@@ -11,6 +11,9 @@
             <x-projectcard :project="$project" style="w-auto h-96 shadow-md" />
         @endforeach 
     </div>
+    <div class="my-12 grid place-items-center w-full">
+        {{ $projects->links('vendor.pagination.tailwind') }}
+    </div>
 </div>
 
 @endsection
