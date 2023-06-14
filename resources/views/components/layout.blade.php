@@ -19,20 +19,17 @@
     <div class="min-h-screen bg-cover bg-no-repeat overflow-x-hidden" style="background-image: url(@yield('bg'))">
         <nav x-data="{ open: false }" class="bg-gradient-to-b from-[#000000] text-center">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between h-20">
-                    <div class="flex justify-between">
+                <div class="flex justify-between h-20 w-full">
+                    <div class="flex justify-between w-full">
                         <div class="shrink-0 flex items-center">
                             <a href="/" class='text-white text-4xl erica'>Outlining<br/>Design</a>
                         </div>
-                        <div class="hidden space-x-8 md:-my-px md:ml-10 md:flex">
+                        <div class="hidden space-x-8 sm:-my-px sm:pr-20 sm:flex sm:gap-x-20">
                             <x-navlink :href="route('home')" :active="request()->routeIs('home')">
                                 {{ __('Home') }}
                             </x-navlink>
                             <x-navlink :href="route('project.index')" :active="request()->routeIs('project.index')">
                                 Student’s<br>Final Project
-                            </x-navlink>
-                            <x-navlink :href="route('about')" :active="request()->routeIs('about')">
-                                About<br>Outlining
                             </x-navlink>
                         </div>
                     </div>
@@ -55,9 +52,6 @@
                     </x-dropdown-link>
                     <x-dropdown-link :href="route('project.index')">
                         {{ __("Student's Final Project") }}
-                    </x-dropdown-link>
-                    <x-dropdown-link :href="route('about')">
-                        {{ __("About Outlining") }}
                     </x-dropdown-link>
                 </div>
             </div>

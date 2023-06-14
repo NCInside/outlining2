@@ -17,7 +17,7 @@ class ProjectController extends Controller
     {
         return view('projects', [
             'category' => null,
-            'projects' => Project::paginate(3)
+            'projects' => Project::paginate(6)
         ]);
     }
 

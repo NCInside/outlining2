@@ -21,6 +21,3 @@ Route::resource('galery', GaleryController::class);
 Route::resource('project', ProjectController::class);
 
 Route::get('/', [CategoryController::class, 'index'])->name('home');
-Route::get('/about', function () {
-    return view('about');
-})->name('about');

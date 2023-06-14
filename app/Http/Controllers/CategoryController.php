@@ -52,7 +52,7 @@ class CategoryController extends Controller
     {
         return view('projects', [
             'category' => $category,
-            'projects' => Project::whereCategoryId($category->id)->paginate(3)
+            'projects' => Project::whereCategoryId($category->id)->paginate(6)
         ]);
     }
 

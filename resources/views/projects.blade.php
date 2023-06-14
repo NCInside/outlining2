@@ -6,9 +6,9 @@
 
 <div class="text-center pt-8">
     <p class="text-white text-6xl erica">{{ $category ? $category->name : 'All' }}</p>
-    <div class='grid gap-y-16 gap-x-8 min-[500px]:grid-cols-2 min-[930px]:grid-cols-3 grid-cols-1 px-12 py-8'>
+    <div class='grid gap-y-8 gap-x-8 sm:grid-cols-2 lg:grid-cols-3 grid-cols-1 px-12 py-8 place-items-center'>
         @foreach($projects as $project)
-            <x-projectcard :project="$project" style="w-auto h-96 shadow-md" />
+            <x-projectcard :project="$project" style="shadow-md w-[330px] sm:w-[275px] min-[740px]:w-[300px] min-[835px]:w-[350px] min-[975px]:w-[400px] lg:w-[300px] min-[1198px]:w-[350px] min-[1388px]:w-[400px] min-[1578px]:w-[450px]" />
         @endforeach 
     </div>
     <div class="my-12 grid place-items-center w-full">
